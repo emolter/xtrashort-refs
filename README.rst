@@ -14,6 +14,21 @@ Usage options
 * clone the repository, test that it is working using ``python3 texcompile.py xtrashort-refs-example``
 * copy only the .bst file, then copy-paste relevant lines the .tex file into whatever latex you are already writing.
 
+What we did
+-----------
+
+Neither of us had any idea how to modify .bst files beforehand. The main changes we made from the original apalike.bst were
+
+* 
+* 
+
+How to contribute
+-----------------
+Go ahead and do the typical contribution fork and PR workflow. Some things that still don't work well are
+
+*
+*
+
 Disclaimer
 ----------
 
