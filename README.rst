@@ -1,7 +1,7 @@
 Simple LaTeX Hack for Very Condensed References
 -----------------------------------------------
 
-Nobody knows why some institutions still force you to compress references in order to fit on a page for proposals and the like. Some institutions have come around to excluding references in page limits, but for those that haven't, there is this bst file.
+Nobody knows why some institutions still force you to compress references in order to fit on a page for proposals and the like. Some institutions have come around to excluding references in page limits, but for those that haven't, there is this repository.
 
 Gallery
 -------
