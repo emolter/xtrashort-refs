@@ -285,11 +285,106 @@ FUNCTION {format.editors}
   if$
 }
 
+FUNCTION {format.eid}
+{
+  eid empty$
+    { "" }
+    { "" eid * }
+  if$
+}
+  
+FUNCTION {format.doi}
+{
+  doi empty$
+    { "" }
+    { "DOI: \href{https://dx.doi.org/" doi * "}{\ttfamily " * doi escape.url.characters * "}" * }
+  if$
+}
+
+STRINGS { str rem }
+
+FUNCTION {format.isbn}
+{
+  isbn empty$
+    { "" }
+    {
+      "ISBN:"
+      isbn
+      {
+	duplicate$ empty$ not
+      }
+      {
+	split.at.first.space
+	'rem :=
+	'str :=
+	str #1 #1 substring$
+	is.number.character
+	  {" \href{https://openlibrary.org/search?isbn=" * str * "}{\ttfamily " * str escape.url.characters * "}" *}
+	  {" " * str escape.url.characters *}
+	if$
+	rem
+      }
+      while$
+      pop$
+    }
+  if$
+}
+  
+FUNCTION {format.issn}
+{
+  issn empty$
+    { "" }
+    {
+      "ISSN:"
+      issn
+      {
+	duplicate$ empty$ not
+      }
+      {
+	split.at.first.space
+	'rem :=
+	'str :=
+	% If you find an open search engine for ISSN, please tell to the author.
+	% To make it a URL, pay attention: there might have a coma, so purify before.
+	" {\ttfamily " * str escape.url.characters * "}" *
+	rem
+      }
+      while$
+      pop$
+    }
+  if$
+}
+  
+FUNCTION {format.url}
+{
+  url empty$
+    { "" }
+    { "\url{" url * "}" * }
+  if$
+}
+
+FUNCTION {format.refs}
+{
+  format.eid output
+  format.isbn output
+  format.issn output
+  format.doi output
+  format.url output
+}
+
 % remove article titles
 FUNCTION {format.title}
 { title empty$
     { "" }
     { "" }
+  if$
+}
+
+% keep software titles
+FUNCTION {format.swtitle}
+{ title empty$
+    { "" }
+    { title "t" change.case$  }
   if$
 }
 
@@ -526,6 +621,28 @@ FUNCTION {article}
   note output
   fin.entry
 }
+
+FUNCTION {software}
+{ output.bibitem
+  format.authors "author" output.check
+  author format.key output                              % special for
+  output.year.check                                     % apalike
+  new.block
+  format.swtitle "title" output.check
+  new.block
+  crossref missing$
+    { journal emphasize "journal" output.check
+      format.vol.num.pages output
+    }
+    { format.article.crossref output.nonnull
+      format.pages output
+    }
+  if$
+  new.block
+  note output
+  fin.entry
+}
+
 
 FUNCTION {book}
 { output.bibitem
