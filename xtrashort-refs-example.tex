@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}  
+
+\usepackage{jwstproposaltemplate}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphics,graphicx}
+\usepackage{float} %enables forcing figures to sit where you want them with [H]
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup{belowskip=0pt}
+\captionsetup{font=footnotesize,skip=0pt}
+
+% bibliography-relevant packages
+\usepackage[sort&compress,numbers]{natbib}
+\usepackage{paralist}
+\setlength{\bibsep}{0.0pt}
+
+% commands to make all the short journal titles
+% I'm sure there is a list somewhere, and/or a smarter way to do this
+\newcommand\araa{Annu.~Rev.~Astron.~Astrophys.}%
+\newcommand\arep{Annu.~Rev.~Earth~Planet.~Sci.}%
+\newcommand\aj{Astron.~J.}%
+\newcommand\apjl{Astrophys.~J.~Lett.}%
+\newcommand\apj{Astrophys.~J.}%
+\newcommand\aap{Astron.~Astrophys.}%
+\newcommand\grl{Geophys.~Res.~Lett.}%
+\newcommand\icarus{Icarus}%
+\newcommand\jgr{J. Geophys.~Res.}%
+\newcommand\mnras{Mon.~Not.~Roy.~Astron.~Soc.}%
+\newcommand\nat{Nature}%
+\newcommand\pasp{Pub.~Astron.~Soc.~Pac.}%
+\newcommand\planss{Planet.~Space~Sci.}%
+\newcommand\psj{Planet.~Sci.~J.}%
+\newcommand\ptrsa{Philos.~Trans.~R.~Soc.~A}%
+\newcommand\ssr{Space~Sci.~Rev.}%
+
+\begin{document}
+
+\begin{center}
+	\textbf{Very Compressed Citations with xtrashort.bst}
+\end{center}
+
+\justification
+
+Nobody knows why institutions still force you to compress references and make them smaller font in order to fit on a page. Some institutions have come around to excluding references in page limits, but for those that haven't, there is this bst file. That's a lot of citations in a small space!\citep{akins23, allison91, arras21, atreya20, aurnou07, beebe05, brogan18, lellouch07, sherjal95, teca}!
+
+Hopefully the in-line comments are clear in both this file and in the .bst file, which I modified from apalike.bst. Big thanks to Yasmeen Asali for sharing that she had hacked .bst files for similar purposes before.
+
+Not everything works perfectly yet; something should be done about e.g. conference proceedings like \citep{thatte15} but I didn't want to deal with it.
+
+% modified apalike bst, with help from Yasmeen Asali at .Astronomy 12, Flatiron Institue, NYC
+\bibliographystyle{apalike-xtrashort}
+
+% condensed bibliography formatting via paralist enum environment
+% see https://latex.org/forum/viewtopic.php?t=5953
+\renewenvironment*{thebibliography}{
+   \pointlessenum
+   \begin{inparaenum}
+   \renewcommand\makelabel[1]{  \textbf{[##1]}}
+}{\end{inparaenum}}
+
+% left align to remove weird spacing issues from forcing justified
+% although some of the kerning could still use some work
+\begin{flushleft}
+% make reference fontsize smaller
+\footnotesize{
+\textit{References:}
+\bibliography{sample}{} 
+}
+\end{flushleft}
+
+\vspace{2cm}
+\noindent\textit{
+Author: Ned Molter, emolter@berkeley.edu, 6 October 2023
+}
+
+\end{document}
+
+\endinput
