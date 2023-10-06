@@ -19,9 +19,9 @@ What we did, and how to hack our hack
 
 Neither of us had any idea how to modify .bst files beforehand. The main changes we made from the original apalike.bst were
 
-* Rewrote the function `format.names` to display only the first author. BTW, it is easy to get the first, say, 5 authors; look for the line in `format.names` that says `numnames %1` and simply change the 1 to a 5
-* Removed titles for articles by just making all the strings empty in `FUNCTION {format.title}`
-* Added `FUNCTION {software}` and made its title distinct from article-type titles so that it would be displayed. As a disclaimer, we have no idea how software is supposed to appear in APA guidelines.
+* Rewrote the function `format.names` to display only the first author. BTW, it is easy to get the first, say, 5 authors; look for the line in ``format.names`` that says ``numnames %1`` and simply change the 1 to a 5
+* Removed titles for articles by just making all the strings empty in ``FUNCTION {format.title}``
+* Added ``FUNCTION {software}`` and made its title distinct from article-type titles so that it would be displayed. As a disclaimer, we have no idea how software is supposed to appear in APA guidelines.
 
 This was a quick Friday afternoon hack at dotAstronomy 12.
 
