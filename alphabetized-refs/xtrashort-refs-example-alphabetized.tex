@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}  
+
+\usepackage{jwstproposaltemplate}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphics,graphicx}
+\usepackage{float} %enables forcing figures to sit where you want them with [H]
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup{belowskip=0pt}
+\captionsetup{font=footnotesize,skip=0pt}
+
+% bibliography-relevant packages
+
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\setlength{\bibsep}{0.0cm}
+
+\usepackage{paralist}
+\renewenvironment{thebibliography}[1]{\let\par\relax% 
+\section*{\refname}\inparaitem}{\endinparaitem}
+\let\oldbibitem\bibitem
+\renewcommand{\bibitem}{\item[\textbullet]\oldbibitem}
+
+% to make the references smaller font 
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\scriptsize \setlength{\parsep}{0pt}\setlength{\itemsep}{0pt plus 0.1pt}\settowidth}{}{}
+
+% import aas macros style file to get full list of journal acryonms 
+\usepackage{aas_macros}
+
+\begin{document}
+
+\begin{center}
+	\textbf{Very Compressed Citations with xtrashort.bst}
+\end{center}
+
+\justification
+
+Nobody knows why institutions still force you to compress references and make them smaller font in order to fit on a page. Some institutions have come around to excluding references in page limits, but for those that haven't, there is this bst file. That's a lot of citations in a small space!\citep{akins23, allison91, arras21, atreya20, aurnou07, beebe05, brogan18, lellouch07, sherjal95,  esposito91, teca}!
+
+Hopefully the in-line comments are clear in both this file and in the .bst file, which I modified from apalike.bst. Big thanks to Yasmeen Asali for sharing that she had hacked .bst files for similar purposes before.
+
+Not everything works perfectly yet; something should be done about e.g. conference proceedings like \citep{thatte15} but I didn't want to deal with it.
+
+% modified apalike bst, with help from Yasmeen Asali at .Astronomy 12, Flatiron Institue, NYC
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\bibliographystyle{apalike-xtrashort} % choose the reference style
+\bibliography{sample} % Entries are in the sample.bib file
+
+% end 
+
+\vspace{2cm}
+\noindent\textit{
+Author: Ned Molter, emolter@berkeley.edu, 6 October 2023
+}
+
+\end{document}
+
+\endinput
