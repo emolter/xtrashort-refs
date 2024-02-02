@@ -15,7 +15,7 @@ Usage options
 -------------
 
 * Clone the repository, and test that it is working using ``python3 texcompile.py xtrashort-refs-example``.
-    - Note: the texcompile.py script is only working with the numbered refs version. The alphabetized version was rendered using pdflatex in Overleaf.
+    * Note: the texcompile.py script is only working with the numbered refs version. The alphabetized version was rendered using pdflatex in Overleaf.
 * Copy only the .bst file and relevant .sty files, then copy-paste relevant lines the .tex file into whatever latex you are already writing.
 
 What we did, and how to hack our hack
