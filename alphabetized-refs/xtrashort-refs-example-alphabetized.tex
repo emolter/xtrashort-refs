@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}  
+
+\usepackage{jwstproposaltemplate}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphics,graphicx}
+\usepackage{float} %enables forcing figures to sit where you want them with [H]
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup{belowskip=0pt}
+\captionsetup{font=footnotesize,skip=0pt}
+
+%%% bibliography-relevant packages + code: 
+
+\usepackage{natbib}
+
+% this displays your refs as a bullet separted para
+\usepackage{paralist}
+\renewenvironment{thebibliography}[1]{\let\par\relax% 
+\section*{\refname}\inparaitem}{\endinparaitem}
+\let\oldbibitem\bibitem
+\renewcommand{\bibitem}{\item[\textbullet]\oldbibitem}
+
+% to make the references smaller font, you can comment this out if you want to keep the same style but keep the reference font the same as the text
+% e.g. if your proposal has a minimum font size limit of 11pt, you will probably want to comment out the following lines 
+\apptocmd{\thebibliography}{\scriptsize \setlength{\parsep}{0pt}\setlength{\itemsep}{0pt plus 0.1pt}\settowidth}{}{}
+
+% import aas macros style file to get full list of journal acryonms 
+\usepackage{aas_macros}
+
+%%% end of bibliography relevant code
+
+\begin{document}
+
+\begin{center}
+	\textbf{Very Compressed Citations with xtrashort.bst: Alphabetical Citations}
+\end{center}
+
+\justification
+
+
+This is an extension of the previous xtrashort.bst that includes alphabetical citations rather than numbers. So that when you're writing, you can use in text citations like this: \cite{akins23} show some result in their paper. Here are a bunch of citations to fill the references section with different examples: \citep{akins23, allison91, arras21, atreya20, aurnou07, beebe05, brogan18, lellouch07, sherjal95,  esposito91, teca}!
+
+Again, this version modifies the apalike.bst. No title is displayed, and there is a max author limit of three (if there are more than three authors, it displays as first author et al.). I've also included some code in the .tex file to display the references as a paragraph with bullet separation, and the reduce the fontsize of the references. Every component is indicated with comments. 
+
+This version still has some of the same bugs as the original, numerical xtrashort style. For instance: something should be done about e.g. conference proceedings like \citep{thatte15} but I didn't want to deal with it.
+
+% modified apalike bst. Ned Molter + Yasmeen Asali at .Astronomy 12, Flatiron Institue, NYC
+\bibliographystyle{apalike-xtrashort} % choose the reference style
+\bibliography{sample} % Entries are in the sample.bib file
+
+% end 
+
+\vspace{2cm}
+\noindent\textit{Authors: Ned Molter (emolter@berkeley.edu) \& Yasmeen Asali (yasmeen.asali@yale.edu)}
+
+\noindent\textit{2 February 2024}
+
+
+\end{document}
+
+\endinput
